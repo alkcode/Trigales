@@ -1,12 +1,16 @@
 <?php
 require("../fpdf/fpdf.php");
 
+
+
 //echo '<link rel="icon" type="image/png" href="../logo 2016.png">';
 class PDF extends FPDF
 {
 // Cabecera de página
 function Header()
 {
+  $hoy= date("Y-m-d");
+  $fechaRep=str_replace('-','/',date('j-m-Y',strtotime($hoy)));
   $this->Image('../logo 2016.png',10,8,33);
    // Arial bold 15
    $this->SetFont('Times','',12);
@@ -15,8 +19,9 @@ function Header()
    // Título
    $this->Cell(180,20,utf8_decode('Ventas del Dia Trigales de Oro ® '),1,0,'C');
    // Salto de línea
-   $this->Ln(20);
-   $this->Ln(20);
+   $this->Ln(30);
+   $this->Cell(400,6,$fechaRep,0,0,'C',0);
+   $this->Ln(10);
 
    //Encabezado
    $this->Cell(20,6,'NOTA',1,0,'C',0);

@@ -10,7 +10,7 @@ if($sentencia === TRUE){
 
     echo "<h1>El usuario se elimino correctamente</h1>";
     echo '<center><a href="./muestraClientes.php">Volver a la lista de clientes </a><center>';
-	// header("Location: ./muestraClientes.php");
+	//header("Location: ./muestraClientes.php");
 }
 // }else{
 //     echo "Hola";

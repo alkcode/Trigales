@@ -8,13 +8,16 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
+  $hoy= date("Y-m-d");
+  $fechaRep=str_replace('-','/',date('j-m-Y',strtotime($hoy)));
   //$this->Image('../logo 2016.png',10,8,33);
    // Arial bold 15
    $this->SetFont('Arial','B',10);
    // Movernos a la derecha
    $this->Cell(50);
    // Título
-   $this->Cell(100,20,utf8_decode('Salida Trigales de Oro ® '),0,0,'C');
+   $this->Cell(100,20,utf8_decode('Salida Trigales de Oro ®'),0,0,'C');
+   $this->Cell(20,20,utf8_decode($fechaRep),0,0,'C');
    // Salto de línea
    $this->Ln(15);
 
