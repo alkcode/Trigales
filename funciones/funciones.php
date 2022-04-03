@@ -29,6 +29,21 @@ function myFunction2() {
   document.getElementById("demo").innerHTML = txt;
 }
 
+// Borrar Clientes
+function borrarClientes(idCliente){
+    if(confirm("¿Seguro que quiere eliminar a este usuario?")){
+        //href="<?php //echo "eliminar.php?id=" . $datos->id_nombre?>"
+        window.location=("eliminar.php?id="+ idCliente);
+    }
+}
+
+function borrarPastel(idPastel){
+    if(confirm("Seguro que quieres eliminar el siguiente pastel?")){
+        window.location=("eliminar.php?id="+ idPastel);
+    }
+    
+}
+
 
 function deshabilitaRetroceso(){
      window.location.hash="no-back-button";

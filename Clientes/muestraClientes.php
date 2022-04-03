@@ -36,6 +36,19 @@ function deshabilitarRetroceso(){
      window.location.hash="Again-No-back-button" //chrome
      window.onhashchange=function(){window.location.hash="no-back-button";}
 }
+
+
+  function alerta()
+      {
+      var mensaje;
+      var opcion = confirm("Clicka en Aceptar o Cancelar");
+      if (opcion == true) {
+          mensaje = "Has clickado OK";
+    } else {
+        mensaje = "Has clickado Cancelar";
+    }
+    document.getElementById("ejemplo").innerHTML = mensaje;
+  }
 </script>
 
 <style>
@@ -111,7 +124,7 @@ $clientes= $sentencia->fetchAll(PDO::FETCH_OBJ);
           <td><?php echo $datos->ruta ?></td>
           <td><?php echo $datos->tipo_pago ?></td>
           <td><a class="btn btn-warning" href="<?php echo "editar.php?id=" . $datos->id_nombre?>"><i class="fa fa-trash"></i></a></td>
-          <td><a class="btn btn-danger" href="<?php echo "eliminar.php?id=" . $datos->id_nombre?>"><i class="fa fa-trash"></i></a></td>
+          <td><a class="btn btn-danger" onclick="borrarClientes(<?php echo $datos->id_nombre; ?>)"><i class="fa fa-trash"></i></a></td>
 
   <?php 
       $i++;

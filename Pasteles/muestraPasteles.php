@@ -59,7 +59,7 @@ a{
          window.onhashchange=function(){window.location.hash="no-back-button";}
     }
 </script>
-
+<?php include("../funciones/funciones.php"); ?>
 <?php
 $sentencia = $base_de_datos->query("SELECT * FROM pasteles");
 $pasteles= $sentencia->fetchAll(PDO::FETCH_OBJ);
@@ -88,6 +88,7 @@ $pasteles= $sentencia->fetchAll(PDO::FETCH_OBJ);
           <th>Precio Menudeo</th>
 
           <th class="warning">Editar</th>
+          <th class="danger">Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -103,7 +104,7 @@ $pasteles= $sentencia->fetchAll(PDO::FETCH_OBJ);
           <td><?php echo $datos->p_menudeo; ?></td>
 
           <td><a class="btn btn-warning" href="<?php echo "editarPastel.php?id=" . $datos->id_producto?>"><i class="fa fa-trash"></i></a></td>
-
+          <td><a class="btn btn-danger" onclick="borrarPastel(<?php echo $datos->id_producto; ?>)"><i class="fa fa-trash"></i></a></td>
   <?php } ?>
         </tbody>
 	</table>
