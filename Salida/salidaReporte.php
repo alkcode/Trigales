@@ -9,7 +9,7 @@ class PDF extends FPDF
 function Header()
 {
   $hoy= date("Y-m-d");
-  $fechaRep=str_replace('-','/',date('j-m-Y',strtotime($hoy)));
+  $fechaRep=str_replace('-','/',date('j-m-Y',strtotime("1 days",strtotime($hoy))));
   //$this->Image('../logo 2016.png',10,8,33);
    // Arial bold 15
    $this->SetFont('Arial','B',10);
@@ -54,7 +54,6 @@ $result2=$conexion->query($sql2);
 $sql3="SELECT SUM(stockRuta2) as total2 FROM pastelesstock";
 $result3=$conexion->query($sql3);
 
-$fecha=date("d-m-Y");
 
 
 $pdf=new PDF();
@@ -105,6 +104,9 @@ $final=$total1+$total2;
 $pdf->Cell(30,6,utf8_decode($final),1,0,'C');
 
 mysqli_close($conexion);
+
+$hoy2= date("Y-m-d");
+$fecha=str_replace('-','/',date('j-m-Y',strtotime("1 days",strtotime($hoy2))));
 
 $pdf->Output("Salida ".$fecha.".pdf","D");
  ?>
