@@ -1,7 +1,7 @@
 		</div>
 	</div>
 </body>
-</html>
+<script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 
@@ -30,3 +30,5 @@
       }
     }
 </script>
+
+</html>
