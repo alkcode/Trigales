@@ -2,48 +2,56 @@
 //TRIGALES DE ORO
 session_start();
 error_reporting(0);
-   if($_SESSION['user']==null || $_SESSION['user']==''){
-     echo '<br>';
-     echo '<br>';
-     echo '<center> Usted no tiene autorización </center>';
-     echo '<br>';
-     echo '<br>';
-     echo '<center> Inicie sesión de forma correcta </center>';
-     echo '<br>';
-     echo '<br>';
-     echo '<center><a href="../index.php">Iniciar sesión</a></center>';
-     die();
-     //require_once("../Conexion/autorizacion.php");
-   }
+if ($_SESSION['user'] == null || $_SESSION['user'] == '') {
+	echo '<br>';
+	echo '<br>';
+	echo '<center> Usted no tiene autorización </center>';
+	echo '<br>';
+	echo '<br>';
+	echo '<center> Inicie sesión de forma correcta </center>';
+	echo '<br>';
+	echo '<br>';
+	echo '<center><a href="../index.php">Iniciar sesión</a></center>';
+	die();
+	//require_once("../Conexion/autorizacion.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Ventas TRIGALES DE ORO</title>
-  <link rel="icon" type="image/png" href="../logo 2016.png">
-	<link rel="stylesheet" href="./css/fontawesome-all.min.css">
+	<link rel="icon" type="image/png" href="../logo 2016.png">
+	<!-- <link rel="stylesheet" href="./css/fontawesome-all.min.css">
 	<link rel="stylesheet" href="./css/2.css">
-	<link rel="stylesheet" href="./css/estilo.css">
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="./css/estilo.css"> -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <?php include("../funciones/funciones.php"); ?>
 
-	<style >
-				th{
-					background: yellow;
-				}
-				.nav navbar-nav{
-					background: green;
-				}
-		</style>
+	<!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> -->
+	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script> -->
+
+	<?php include("../funciones/funciones.php"); ?>
+
+	<style>
+		th {
+			background: yellow;
+		}
+
+		.nav navbar-nav {
+			background: green;
+		}
+	</style>
 
 </head>
+
 <body onload="deshabilitaRetroceso()">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-dark bg-success">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">TRIGALES DE ORO</a>
@@ -58,5 +66,5 @@ error_reporting(0);
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container mt-3">
 		<div class="row">

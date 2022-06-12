@@ -23,9 +23,12 @@ error_reporting(0);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Ventas TRIGALES DE ORO</title>
   <link rel="icon" type="image/png" href="../logo 2016.png">
-	<link rel="stylesheet" href="./css/fontawesome-all.min.css">
+	<!-- <link rel="stylesheet" href="./css/fontawesome-all.min.css">
 	<link rel="stylesheet" href="./css/2.css">
-	<link rel="stylesheet" href="./css/estilo.css">
+	<link rel="stylesheet" href="./css/estilo.css"> -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <?php include("../funciones/funciones.php"); ?>
 

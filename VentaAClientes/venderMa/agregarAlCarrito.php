@@ -48,7 +48,11 @@ if($producto){
 
 			}else{
 				$producto->p_mayoreo = $producto->p_mayoreo+$rellenoValor->precio;
-				$producto->pastel=	$producto->pastel." RELLENO DE ".$rellenoValor->nombreRelleno;
+				if($relleno == 4 || $relleno == 5){
+					$producto->pastel=	$producto->pastel." ".$rellenoValor->nombreRelleno;
+				}else{
+					$producto->pastel=	$producto->pastel." RELLENO DE ".$rellenoValor->nombreRelleno;
+				}
 
 			}
 
