@@ -65,15 +65,20 @@ $resultado = $sentencia->fetch(PDO::FETCH_OBJ);
 $idVenta = $resultado === false ? 1 : $resultado->id;
 
 $base_de_datos->beginTransaction();
-$sentencia = $base_de_datos->prepare("INSERT INTO productos_vendidos(id_producto, cantidad, precio, subtotal, id_venta) VALUES (?, ?, ?, ?, ?);");
-//ejemplo
-$sentenciaExistencia = $base_de_datos->prepare("UPDATE pastelesstock SET $stock = $stock + ? WHERE id_producto = ?");
+// $sentencia = $base_de_datos->prepare("INSERT INTO productos_vendidos(id_producto, cantidad, precio, subtotal, id_venta) VALUES (?, ?, ?, ?, ?);");
 
-foreach ($_SESSION["carrito"] as $producto) {
+// $sentenciaExistencia = $base_de_datos->prepare("UPDATE pastelesstock SET $stock = $stock + ? WHERE id_producto = ?");
+
+// foreach ($_SESSION["carrito"] as $producto) {
+// 	$total += $producto->total;
+// 	$sentencia->execute([$producto->id_producto, $producto->cantidad, $producto->p_eventual, $producto->total, $idVenta]);
+	
+// 	$sentenciaExistencia->execute([$producto->cantidad, $producto->id_producto]);
+// }
+$sentencia = $base_de_datos->prepare('CALL sp_prod_vendidos_y_act_stock(?, ?, ?, ?, ?, ?)');
+foreach($_SESSION["carrito"] as $producto){
 	$total += $producto->total;
-	$sentencia->execute([$producto->id_producto, $producto->cantidad, $producto->p_eventual, $producto->total, $idVenta]);
-	//ejemplo
-	$sentenciaExistencia->execute([$producto->cantidad, $producto->id_producto]);
+	$sentencia->execute([$producto->id_producto, $producto->cantidad, $producto->p_eventual, $producto->total, $idVenta, $stock]);
 }
 $base_de_datos->commit();
 
@@ -89,3 +94,19 @@ if ($query -> rowCount() > 0) {
 }
 
 ?>
+
+
+<!-- DELIMITER $$
+CREATE PROCEDURE sp_prod_vendidos_y_act_stock(
+	IN id_producto_p INT, IN cantidad_p FLOAT, IN precio_p FLOAT, IN total_p FLOAT, IN id_venta_p INT, IN stockRuta_p VARCHAR(10)
+)
+BEGIN
+	INSERT INTO productos_vendidos(id_producto, cantidad, precio, subtotal, id_venta) VALUES (id_producto_p, cantidad_p, precio_p, total_p, id_venta_p);
+	If stockRuta_p = 'stockRuta1' Then
+		UPDATE pastelesstock SET stockRuta1 = stockRuta1 + cantidad_p WHERE id_producto = id_producto_p;
+	Else
+		UPDATE pastelesstock SET stockRuta2 = stockRuta2 + cantidad_p WHERE id_producto = id_producto_p;
+	End If;
+    
+END$$
+DELIMITER  -->

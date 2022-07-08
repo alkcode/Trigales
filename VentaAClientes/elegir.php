@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 include_once "encabezado.php";
+require("../Conexion/base_de_datos.php");
 session_start();
 
 //if(!isset($_SESSION["cliente"])) $_SESSION["cliente"] = [];
@@ -70,6 +71,12 @@ if (!isset($_SESSION["cliente"])) $_SESSION["cliente"] = [];
 
 		}
 	}
+	$(document).ready(function () {
+
+	//alert( "JQuery ready. ");
+		$("#nombre").select2();
+		
+	});
 </script>
 
 <div class="col-xs-12">
@@ -98,7 +105,26 @@ if (!isset($_SESSION["cliente"])) $_SESSION["cliente"] = [];
 				<label for="codigo">Ingrese el Nombre del Cliente:</label>
 			</div>
 			<div class="col-md-12 mb-3">
-				<input autocomplete="on" autofocus class="form-control" name="nombre" required type="text" id="codigo" placeholder="Escribe el Nombre" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+				<!-- <input autocomplete="on" autofocus class="form-control" name="nombre" required type="text" id="nombre" placeholder="Escribe el Nombre" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" required> -->
+				<?php
+					
+					$sentencia = $base_de_datos->prepare("SELECT * FROM clientes");
+					$sentencia->execute();
+					$clientes = $sentencia->fetchAll(PDO::FETCH_OBJ);
+					// $i = 0;
+					?>
+				<select class="form-control"
+                    name="nombre" id="nombre" style=" width:100%"
+                    aria-label="Default select example">
+                    <option value="0" selected>Seleccione una opcion
+                    </option>
+                    	<?php foreach ($clientes as $cliente) {	?>
+							<option value="<?php echo $cliente->nombre; ?>"><?php echo $cliente->nombre ?></option>
+
+						<?php
+						}
+						?>
+                </select>
 			</div>
 			<div class="col-md-12 mb-5">
 				<input class="btn btn-primary" type="submit" name="aceptar" value="Buscar Cliente">

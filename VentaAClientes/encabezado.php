@@ -30,7 +30,9 @@ if ($_SESSION['user'] == null || $_SESSION['user'] == '') {
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" /> -->
+	<link href="../css/select2.min.css" rel="stylesheet" />
+	
 	<script>
 		function soloNumeros(e) {
 			key = e.keyCode || e.which;
@@ -64,6 +66,13 @@ if ($_SESSION['user'] == null || $_SESSION['user'] == '') {
 
 </head>
 	<?php include("../funciones/funciones.php"); ?>
+	<script type="text/javascript">
+	$(function() {
+		$( "#nombre" ).autocomplete({
+			source: 'autocompletarUsuario.php',
+		});
+  	});
+</script>
 <body>
 	<nav class="navbar navbar-dark bg-success">
 		<div class="container">

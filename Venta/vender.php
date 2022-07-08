@@ -88,13 +88,13 @@ $piezasVen = 0;
 		</div>
 		<div class="opciones">
 			<div class="row">
-				<div class="col-lg-2 mt-2">
-					<input type="text" name="cantidad" id="cantidad" value="" placeholder="Cantidad" onkeypress="return soloNumeros(event)" onkeypress="return validar(event)" maxlength="03" required>
+				<div class="col-lg-2 col-md-12 col-sm-12 mt-2">
+					<input type="text" name="cantidad" id="cantidad" class="form-control" value="" placeholder="Cantidad" onkeypress="return soloNumeros(event)" onkeypress="return validar(event)" maxlength="03" required>
 				</div>
-				<div class="col-md-2 mt-2">
-					<input type="text" name="texto" maxlength="25" placeholder="Texto (OPCIONAL)">
+				<div class="col-md-2 col-sm-12 mt-2">
+					<input type="text" name="texto" class="form-control" maxlength="25" placeholder="Texto (OPCIONAL)">
 				</div>
-				<div class="col-md-3 mt-2">
+				<div class="col-md-3 col-sm-12 mt-2">
 					<label>Rellenos/cubiertos:</label>
 					<!-- El select de rellenos se rellena con la base de datos -->
 					<?php
@@ -125,7 +125,7 @@ $piezasVen = 0;
 					</select>
 				</div>
 				<div class="col-md-2 mt-2">
-					<input class="btn btn-success" type="submit" name="aceptar" value="Agregar">
+					<input class="btn btn-success text-center" type="submit" name="aceptar" value="Agregar">
 				</div>
 			</div>
 		</div>
