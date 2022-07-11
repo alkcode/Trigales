@@ -66,14 +66,19 @@ $resultado = $sentencia->fetch(PDO::FETCH_OBJ);
 $idVenta = $resultado === false ? 1 : $resultado->id;
 
 $base_de_datos->beginTransaction();
-$sentencia = $base_de_datos->prepare("INSERT INTO productos_vendidos(id_producto, cantidad, precio, subtotal, id_venta) VALUES (?, ?, ?, ?, ?);");
-//ejemplo
-$sentenciaExistencia = $base_de_datos->prepare("UPDATE pastelesstock SET $stock = $stock + ? WHERE id_producto = ?");
-foreach ($_SESSION["carrito"] as $producto) {
+// $sentencia = $base_de_datos->prepare("INSERT INTO productos_vendidos(id_producto, cantidad, precio, subtotal, id_venta) VALUES (?, ?, ?, ?, ?);");
+// //ejemplo
+// $sentenciaExistencia = $base_de_datos->prepare("UPDATE pastelesstock SET $stock = $stock + ? WHERE id_producto = ?");
+// foreach ($_SESSION["carrito"] as $producto) {
+// 	$total += $producto->total;
+// 	$sentencia->execute([$producto->id_producto, $producto->cantidad, $producto->p_menudeo, $producto->total, $idVenta]);
+// 	//ejemplo
+// 	$sentenciaExistencia->execute([$producto->cantidad, $producto->id_producto]);
+// }
+$sentencia = $base_de_datos->prepare('CALL sp_prod_vendidos_y_act_stock(?, ?, ?, ?, ?, ?)');
+foreach($_SESSION["carrito"] as $producto){
 	$total += $producto->total;
-	$sentencia->execute([$producto->id_producto, $producto->cantidad, $producto->p_menudeo, $producto->total, $idVenta]);
-	//ejemplo
-	$sentenciaExistencia->execute([$producto->cantidad, $producto->id_producto]);
+	$sentencia->execute([$producto->id_producto, $producto->cantidad, $producto->p_menudeo, $producto->total, $idVenta, $stock]);
 }
 $base_de_datos->commit();
 
