@@ -159,6 +159,7 @@ if (!isset($_SESSION["cliente"])) $_SESSION["cliente"] = [];
 	</div>
 
 </div>
+<script src="../js/busquedaClientes.js"></script>
 
 <br><br>
 <?php include_once "pie.php";  ?>
