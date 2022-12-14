@@ -195,17 +195,7 @@ $piezasVen = 0;
 <a class="btn btn-primary" onclick="myFunction()">Volver al Menú Principal</a>
 </div>
 
-
-<script type="text/javascript">
-	$(function() {
-		//autocomplete
-		$(".pastel").autocomplete({
-			source: "buscar.php",
-			minLength: 1
-		});
-
-	});
-</script>
+<!-- <script src="../js/busquedaPasteles.js"></script> -->
 
 <br><br>
 <?php include_once "pie.php" ?>
